@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1634133289 source:c:\users\acer\music\debug-temp\main.cpp
+	<iostream>
+	<vector>
+

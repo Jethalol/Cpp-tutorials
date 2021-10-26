@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1631773480 source:c:\users\acer\music\class-eg\class-example\account.cpp
+	<iostream>
+	"acc1.h"
+
+1632213929 c:\users\acer\music\class-eg\class-example\acc1.h
+	<string>
+
+1632213844 source:c:\users\acer\music\class-eg\class-example\main.cpp
+	<bits/stdc++.h>
+	"acc1.h"
+
