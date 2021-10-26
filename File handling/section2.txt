@@ -1,0 +1,11 @@
+ABCDE 
+Frank
+ABCDE
+Larry
+ABDCE
+Moe
+BBCDE
+Curly
+BBAAE
+Michael
+BBCDE
