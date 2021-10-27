@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Person {
+
+    public :
+
+        string name;
+        int age;
+
+    bool operator<(const Person &rhs) {
+
+        // bool x = age<rhs.age;
+
+        // cout<<x<<endl;
+
+        // return x;
+
+        return age<rhs.age;
+    }
+};
+
+/* function template with single/same type of parameter */
+
+template <typename T>
+    
+    T minimum (T a, T b) {  // Template function
+
+    return (a<b)? a : b ;   /* Calls overloaded < that returns 0 or 1 after evaluating age then
+/*                       if (1)? then returns a or (0)? then returns b. */  
+
+}
+
+/*
+Where 
+T (or any name of your wish ): It is a placeholder name for a data type used by the function. 
+It is used within the function definition. It is only a placeholder that the compiler will
+ automatically replace this placeholder with the actual data type of function call's argument.
+
+class/typename : A class or typename keyword is used to specify a generic type in a 
+template declaration.
+
+*/
+
+/* function template with multiple type of parameter (can be same data type or different) */
+
+template <typename T1, typename T2>
+    
+    void print (T1 a, T2 b) {  // Template function
+
+       cout<<a<<" "<<b<<endl;
+}
+
+int main() {
+
+    cout<<setw(50)<<setfill('=')<<" for primitive data type "
+        <<right<<setw(25)<<setfill('=')<<endl;
+
+       cout<<"int = "<<minimum<int>(10,20);     
+       
+/* minimum <int> int is used in call to tell template about the type of data type 
+(Although for simple data types it is not needed,compiler will automatically figure it out even 
+if we don't specially mention it. Tho, for complex types, we need it.) */                            
+
+    cout<<setw(50)<<setfill('=')<<" for class data type "
+        <<right<<setw(25)<<setfill('=')<<endl;
+
+    Person p1 {"Curly",50};
+    Person p2 {"Moe",15};
+
+    Person p3;
+
+    p3 = minimum<Person>(p1,p2);    // will get a i.e. p1 or b i.e. p2 as return
+
+    cout<<p3.name<<" is younger."<<endl;
+
+
+    return 0;
+}
