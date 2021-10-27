@@ -55,7 +55,8 @@ int main() {
 
 /* minimum <int> int is used in call to tell template about the type of data type 
 (Although for simple data types it is not needed,compiler will automatically figure it out even 
-if we don't specially mention it. Tho, for complex types, we need it.) */                            
+if we don't specially mention it. Tho, for complex types, we need it.) 
+Best practice is to mention it */                            
 
        cout<<"double = "<<minimum(10.5,20.0)<<endl; // compiler will auto define type    
        cout<<"char = "<<minimum('A','c')<<endl;     
