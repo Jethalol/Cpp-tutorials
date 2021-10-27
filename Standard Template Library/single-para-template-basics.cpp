@@ -9,7 +9,7 @@ class Person {
         string name;
         int age;
 
-    bool operator<(const Person &rhs) {
+    bool operator<(const Person &rhs) { // overloading < operator
 
         // bool x = age<rhs.age;
 
@@ -17,7 +17,7 @@ class Person {
 
         // return x;
 
-        return age<rhs.age;
+        return age<rhs.age; // will return 1 if age < rhs.age, otherwise returns 0
     }
 };
 
@@ -27,8 +27,11 @@ template <typename T>
     
     T minimum (T a, T b) {  // Template function
 
-    return (a<b)? a : b ;   /* Calls overloaded < that returns 0 or 1 after evaluating age then
-/*                       if (1)? then returns a or (0)? then returns b. */  
+    return (a<b)? a : b ;  // Does calculation for normal primitive types normally 
+    
+/* for object type calls overloaded < that returns 0 or 1 after evaluating age 
+ then check happens in minimum's return condition if (1 or true)? then returns 'a' or (0 or false)? 
+ then returns b. */  
 
 }
 
@@ -43,28 +46,23 @@ template declaration.
 
 */
 
-/* function template with multiple type of parameter (can be same data type or different) */
-
-template <typename T1, typename T2>
-    
-    void print (T1 a, T2 b) {  // Template function
-
-       cout<<a<<" "<<b<<endl;
-}
 
 int main() {
 
-    cout<<setw(50)<<setfill('=')<<" for primitive data type "
-        <<right<<setw(25)<<setfill('=')<<endl;
+    cout<<"==================== for primitive data types ========="<<endl;
 
-       cout<<"int = "<<minimum<int>(10,20);     
-       
+       cout<<"int = "<<minimum<int>(10,20)<<endl; 
+
 /* minimum <int> int is used in call to tell template about the type of data type 
 (Although for simple data types it is not needed,compiler will automatically figure it out even 
 if we don't specially mention it. Tho, for complex types, we need it.) */                            
 
-    cout<<setw(50)<<setfill('=')<<" for class data type "
-        <<right<<setw(25)<<setfill('=')<<endl;
+       cout<<"double = "<<minimum(10.5,20.0)<<endl; // compiler will auto define type    
+       cout<<"char = "<<minimum('A','c')<<endl;     
+           
+       
+
+    cout<<"========================== for objects =============="<<endl;
 
     Person p1 {"Curly",50};
     Person p2 {"Moe",15};
