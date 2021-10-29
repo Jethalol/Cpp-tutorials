@@ -19,7 +19,7 @@ void test1 () {
 
     std::vector<int> nums1 {1,2,3,4,5};
 
-/* Using iterators - beginning iterator - */
+/* Using iterators - beginning iterator - iterator points to container element */
 
     std::vector<int> :: iterator it = nums1.begin(); // points to 1 
     std::cout<<*it<<std::endl;
