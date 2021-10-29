@@ -1,66 +1,88 @@
-#include <vector>
 #include <iostream>
-using namespace std;
+#include <vector>
 
-template <typename T>
-    class Item {
+void display (const std::vector<int> &vec) {    // display vector using range based for loop
 
-private :
-    string name;
-    T value;
+    std::cout<<"[ ";
+    for (auto const &v1 : vec) {
 
-public :
-
-    Item(string name_val, T value_val) : name {name_val}, value {value_val} {
-
-
+        std::cout<<v1<<std::endl;
     }
+    std::cout<<" ]"<<std::endl;
 
-    string get_name() const {return name; }
+    
+}
 
-    T get_value() const {return value; }
+void test1 () {
 
-};
+    std::cout<<"============================================="<<std::endl;
 
+    std::vector<int> nums1 {1,2,3,4,5};
+
+/* Using iterators - beginning iterator - */
+
+    std::vector<int> :: iterator it = nums1.begin(); // points to 1 
+    std::cout<<*it<<std::endl;
+
+/*  or auto it = nums1.begin();     //.begin will indicate to auto that we want to use iterator for this. */
+
+
+    /* Remember it is not a pointer, its an object but the syntax and use is 
+    very much like pointer and that's by default so. */
+
+    it++; // points to 2
+    std::cout<<*it<<std::endl;
+
+    it+=2;  // points to 4
+    std::cout<<*it<<std::endl;
+
+    it-=2;   // points to 2
+    std::cout<<*it<<std::endl;
+    
+    it = nums1.end() - 1;   // points to 5
+    std::cout<<*it<<std::endl;
+
+    /* nums1.end() points to one past the end of vector that is, if there are 5 
+    elements in vector then it will point to 6th thats why nums1.end()-1 is used. */
+
+}  
+
+void test2 () {
+
+  std::cout<<"============================================="<<std::endl;
+
+    std::vector<int> nums1 {1,2,3,4,5};
+
+/* Using iterators - beginning iterator - */
+
+    auto it = nums1.begin(); // points to 1 
+  
+  // iterates through vector element  
+    while ( it!=nums1.end() )
+    {
+        std::cout<<*it<<std::endl;
+
+         it++;
+    }
+    
+ // Changes vector elements
+
+    std::cout<<"\nChanging vec element - Another way of 'iterating' thorugh vector\n"
+    <<"this is what happens in range based for loop behind the scenes, used just to explain."<<std::endl;
+    
+    for(auto v1 = nums1.begin(); v1!=nums1.end(); v1++ ) {  // auto = vector <int> :: iterator v1
+
+            *v1 = 0;    
+            std::cout<<*v1<<std::endl;
+    }
+}
 int main() {
 
-    cout<<"===========================================\n";
-
-    Item <int> t1 {"frank",100}; 
-    cout<<t1.get_name()<<" "<<t1.get_value()<<endl;   
-
-    Item <string> t2 {"Curly","Knows"};
-    cout<<t2.get_name()<<" "<<t2.get_value()<<endl;
-
-/* In class template it is neccesary to give template argument <int> or any user defined type. 
-/* Also, In class item since two types string and T is there and we only used one template argument
-/* so obviously the first one will always be string in all declaration and value will be template
-/* argument. */   
-
-    Item < Item<double> > t3 {"Parent name", {"Inside name and val",40.00} };
-    cout<<t3.get_name()<<endl
-        <<t3.get_value().get_name()<<" "    // since value has T as item 
-        <<t3.get_value().get_value()<<endl;
-
-/*  Did it on purpose for understanding - 
-
-Here our item has another item, let's parent item = item1 and inside item = item2
-
-wkt, item-1 has name and value = item-1's name by default and value is what we have as template
-in which we mention item-2. So now we have item-1 with a string name and item-1's T value is another
-item-2. Ok so now this item-2 will have its own name and value, the name will be default and we have 
-to give argument for T value type which we gave as double. i hope its clear */  
-    
-    cout<<"===========================================\n";
-
-        vector <Item <double> > vec {}; // vector of item object with T value double
-
-        vec.push_back( Item <double> ("Larry",100.0) );
-        vec.push_back( Item <double> ("Moe",200.0) );
-        vec.push_back( Item <double> ("Curly",300.0) );
-
-    for(const auto& item : vec) 
-        cout<<item.get_name()<<" "<<item.get_value()<<endl;
+    // test1();
+    test2();
+    // test3();
+    // test4();
+    // test5();
 
     return 0;
 
